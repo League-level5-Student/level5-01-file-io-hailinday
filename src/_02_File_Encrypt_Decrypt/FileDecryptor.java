@@ -24,6 +24,8 @@ public class FileDecryptor {
 	 * the message, then display it to the user in a JOptionPane.
 	 */
 	public static void main(String[] args) {
+		FileEncryptor encrypt = new FileEncryptor();
+		int key = encrypt.getKey();
 		try {
 			FileReader fr = new FileReader("src/_02_File_Encrypt_Decrypt/test.txt");
 			int c = fr.read();
