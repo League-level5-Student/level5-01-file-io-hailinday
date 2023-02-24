@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 public class FileDecryptor {
 	/*
 	 * Decryption is the process of taking encoded or encrypted text or other data
@@ -25,23 +27,21 @@ public class FileDecryptor {
 	 */
 	public static void main(String[] args) {
 		FileEncryptor encrypt = new FileEncryptor();
-		int key = encrypt.getKey();
+		int key = 4;
+		String writeDecrypt = "";
 		try {
 			FileReader fr = new FileReader("src/_02_File_Encrypt_Decrypt/test.txt");
 			int c = fr.read();
 			while(c != -1){
-				//Use ASCII Integers to shift backk -4
-				int ascii = c;
-				if (c != 'a' && c != 'b' && c != 'c' && c != 'd') {
-					c = c-4;
-				} else if (c == 'a') {
-					c = c+22;
-				} else if (c == 'b') {
-					c = c+23;
+				if ((char) (c) != ' ') {
+					char shift = (char) (c-key);
+					writeDecrypt = writeDecrypt + shift;
+				} else {
+					writeDecrypt = writeDecrypt + " ";
 				}
-				System.out.print((char)c);
 				c = fr.read();
 			}
+			JOptionPane.showMessageDialog(null, writeDecrypt);
 			fr.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

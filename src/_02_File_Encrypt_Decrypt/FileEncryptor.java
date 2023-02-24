@@ -25,7 +25,7 @@ public class FileEncryptor {
 	 * Create a program that takes a message and a key from the user.
 	 * Use the key to shift each letter in the users input and save the final result to a file.
 	 */
-	static int key;
+	static int key = 4;
 	public static void main(String[] args) {
 		try {
 			FileWriter fw = new FileWriter("src/_02_File_Encrypt_Decrypt/test.txt");
@@ -36,17 +36,18 @@ public class FileEncryptor {
 			key = kb.nextInt();
 			String writeCrypt = "";
 			for (int i = 0; i < write.length(); i++) {
-				if (write.charAt(i)!= ' ' ++ //figure out the shift of the ends where it goes to the other side of the alphabet) {
-					
+				if (write.charAt(i)!= ' ') {
+					char shift = (char) (write.charAt(i) + key);
+					writeCrypt = writeCrypt + shift;
+				} else {
+					writeCrypt = writeCrypt + " ";
 				}
 			}
-			fw.write(write);
+			System.out.println(writeCrypt);
+			fw.write(writeCrypt);
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	public int getKey () {
-		return key;
 	}
 }
