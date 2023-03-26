@@ -51,3 +51,4 @@ public class FileEncryptor {
 		}
 	}
 }
+//Copyright © 2023 Hailin Day//Copyright © 2023 Hailin Day
